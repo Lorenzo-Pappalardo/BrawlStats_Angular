@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "BrawlStars",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
