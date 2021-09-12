@@ -1,0 +1,16 @@
+<form class="player-stats" (submit)="this.fetchData(playerTagInput.value)">
+  <div class="player-tag-card">
+    <input
+      type="text"
+      class="player-tag-input"
+      placeholder="Player tag"
+      #playerTagInput
+    />
+  </div>
+
+  <button class="confirmButton">Get Stats!</button>
+</form>
+
+<h1 *ngIf="this.playerData" style="color: red; text-align: center">
+  {{ this.prettyPrint() }}
+</h1>
