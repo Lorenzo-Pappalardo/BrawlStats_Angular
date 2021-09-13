@@ -12,6 +12,4 @@
   <ion-button class="confirmButton" type="submit">Get Stats!</ion-button>
 </form>
 
-<h1 *ngIf="this.playerData" style="color: red; text-align: center">
-  {{ this.prettyPrint() }}
-</h1>
+<ion-progress-bar *ngIf="loading" type="indeterminate"></ion-progress-bar>

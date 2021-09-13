@@ -62,10 +62,14 @@ interface Error {
 })
 export class StatsComponent implements OnInit {
   playerData: Player | string | undefined;
+  loading: boolean;
 
   constructor(private statsService: StatsService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.playerData = undefined;
+    this.loading = false;
+  }
 
   isError(obj: any): obj is Error {
     if ((obj as Error).message) {
@@ -75,17 +79,16 @@ export class StatsComponent implements OnInit {
   }
 
   fetchData(tag: string): void {
+    this.loading = true;
+
     this.statsService.fetchData(tag).subscribe((res) => {
       if (this.isError(res)) {
         this.playerData = res.message;
       } else {
         this.playerData = res;
       }
-    });
-  }
 
-  prettyPrint() {
-    console.log(this.playerData);
-    return JSON.stringify(this.playerData);
+      this.loading = false;
+    });
   }
 }
