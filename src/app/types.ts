@@ -51,3 +51,10 @@ export interface Error {
   stack: string;
   config: Record<string, unknown>;
 }
+
+export const isError = (obj: any): obj is Error => {
+  if ((obj as Error).message) {
+    return true;
+  }
+  return false;
+};

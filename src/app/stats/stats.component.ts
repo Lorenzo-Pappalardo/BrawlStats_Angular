@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import { Player, Error } from '../types';
+import { Player, isError } from '../types';
 import { StatsService } from './stats.service';
 
 @Component({
@@ -22,13 +22,6 @@ export class StatsComponent implements OnInit {
     this.loading = false;
   }
 
-  isError(obj: any): obj is Error {
-    if ((obj as Error).message) {
-      return true;
-    }
-    return false;
-  }
-
   async presentToast(text: string) {
     const toast = await this.toastController.create({
       message: text,
@@ -41,7 +34,7 @@ export class StatsComponent implements OnInit {
     this.loading = true;
 
     this.statsService.fetchData(tag).subscribe((res) => {
-      if (this.isError(res)) {
+      if (isError(res)) {
         this.presentToast(res.message);
       }
 
