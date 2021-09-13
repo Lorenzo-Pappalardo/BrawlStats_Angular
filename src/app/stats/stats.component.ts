@@ -1,59 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Player, Error } from '../types';
 import { StatsService } from './stats.service';
-
-interface Player {
-  club: {
-    tag: 'string';
-    name: 'string';
-  };
-  '3vs3Victories': 0;
-  isQualifiedFromChampionshipChallenge: true;
-  icon: {
-    id: 0;
-  };
-  tag: 'string';
-  name: 'string';
-  trophies: 0;
-  expLevel: 0;
-  expPoints: 0;
-  highestTrophies: 0;
-  powerPlayPoints: 0;
-  highestPowerPlayPoints: 0;
-  soloVictories: 0;
-  duoVictories: 0;
-  bestRoboRumbleTime: 0;
-  bestTimeAsBigBrawler: 0;
-  brawlers: [
-    {
-      gadgets: [
-        {
-          name: unknown;
-          id: 0;
-        }
-      ];
-      starPowers: [
-        {
-          name: unknown;
-          id: 0;
-        }
-      ];
-      id: 0;
-      rank: 0;
-      trophies: 0;
-      highestTrophies: 0;
-      power: 0;
-      name: unknown;
-    }
-  ];
-  nameColor: 'string';
-}
-
-interface Error {
-  message: string;
-  name: string;
-  stack: string;
-  config: any;
-}
 
 @Component({
   selector: 'app-stats',
@@ -61,13 +8,13 @@ interface Error {
   styleUrls: ['./stats.component.scss'],
 })
 export class StatsComponent implements OnInit {
-  playerData: Player | string | undefined;
+  playerData: Player;
   loading: boolean;
+  error: string;
 
   constructor(private statsService: StatsService) {}
 
   ngOnInit() {
-    this.playerData = undefined;
     this.loading = false;
   }
 
@@ -83,7 +30,7 @@ export class StatsComponent implements OnInit {
 
     this.statsService.fetchData(tag).subscribe((res) => {
       if (this.isError(res)) {
-        this.playerData = res.message;
+        this.error = res.message;
       } else {
         this.playerData = res;
       }
