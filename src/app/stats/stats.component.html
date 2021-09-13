@@ -1,14 +1,15 @@
 <form class="player-stats" (submit)="this.fetchData(playerTagInput.value)">
-  <div class="player-tag-card">
-    <input
+  <ion-card class="player-tag-card">
+    <ion-input
       type="text"
       class="player-tag-input"
-      placeholder="Player tag"
+      placeholder="Player's Tag"
+      autocapitalize="characters"
       #playerTagInput
-    />
-  </div>
+    ></ion-input>
+  </ion-card>
 
-  <button class="confirmButton">Get Stats!</button>
+  <ion-button class="confirmButton" type="submit">Get Stats!</ion-button>
 </form>
 
 <h1 *ngIf="this.playerData" style="color: red; text-align: center">
