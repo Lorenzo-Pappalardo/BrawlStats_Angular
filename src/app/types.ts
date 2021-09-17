@@ -47,9 +47,6 @@ export interface Player {
 
 export interface Error {
   message: string;
-  name: string;
-  stack: string;
-  config: Record<string, unknown>;
 }
 
 export const isError = (obj: any): obj is Error => {
