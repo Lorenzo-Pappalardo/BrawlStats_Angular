@@ -1,15 +1,15 @@
-<form class="player-stats" (submit)="this.fetchData(playerTagInput.value)">
-  <ion-card class="player-tag-card">
+<form class="form" (submit)="this.fetchData(playerTagInput.value)">
+  <ion-card class="input-card">
     <ion-input
       type="text"
-      class="player-tag-input"
+      class="input-field"
       placeholder="Player's Tag"
       autocapitalize="characters"
       #playerTagInput
     ></ion-input>
   </ion-card>
 
-  <ion-button class="confirmButton" type="submit">Get Stats!</ion-button>
+  <ion-button class="confirm-button" type="submit">Get Stats!</ion-button>
 </form>
 
 <ion-progress-bar *ngIf="loading" type="indeterminate"></ion-progress-bar>
