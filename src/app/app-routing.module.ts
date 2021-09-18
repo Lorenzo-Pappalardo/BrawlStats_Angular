@@ -3,15 +3,16 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'stats',
-    loadChildren: () =>
-      import('./stats/stats.module').then((m) => m.StatsModule),
-  },
-  {
     path: '',
     redirectTo: 'stats',
     pathMatch: 'full',
   },
+  {
+    path: 'stats',
+    loadChildren: () =>
+      import('./stats/stats.module').then((m) => m.StatsModule),
+  },
+  { path: '**', redirectTo: 'stats', pathMatch: 'full' },
 ];
 
 @NgModule({
