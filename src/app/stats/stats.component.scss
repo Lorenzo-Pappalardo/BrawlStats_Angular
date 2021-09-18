@@ -14,10 +14,32 @@
 
 .input-field {
   font-size: xx-large;
+  text-align: center;
 }
 
 .confirm-button {
   --background: #d00000;
   --padding: 0.5em;
   --border-radius: 0 10px 10px 0;
+}
+
+.result-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1em;
+  text-align: center;
+
+  > * {
+    --color: white;
+    padding: 1em;
+    font-size: x-large;
+  }
+
+  *:nth-child(2) {
+    grid-column: 2 / 4;
+
+    > * {
+      display: inline;
+    }
+  }
 }

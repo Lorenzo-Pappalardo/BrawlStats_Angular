@@ -5,6 +5,7 @@
       class="input-field"
       placeholder="Player's Tag"
       autocapitalize="characters"
+      autocomplete="on"
       #playerTagInput
     ></ion-input>
   </ion-card>
@@ -13,3 +14,14 @@
 </form>
 
 <ion-progress-bar *ngIf="loading" type="indeterminate"></ion-progress-bar>
+
+<div *ngIf="this.playerData" class="result-card">
+  <ion-card>Tag: {{ this.playerData.tag }}</ion-card>
+  <ion-card
+    >Name:
+    <div [style.color]="this.playerData.nameColor">
+      {{ this.playerData.name }}
+    </div></ion-card
+  >
+  <ion-card>Highest Trophies: {{ this.playerData.highestTrophies }}</ion-card>
+</div>
