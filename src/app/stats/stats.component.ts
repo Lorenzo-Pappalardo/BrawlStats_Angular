@@ -30,12 +30,20 @@ export class StatsComponent implements OnInit {
     toast.present();
   }
 
+  toRGBA(rgbo: string): string {
+    const rgb = '#' + rgbo.substr(4);
+    return rgb + rgbo.substr(2, 2);
+  }
+
   fetchData(tag: string): void {
     this.loading = true;
 
     this.statsService.fetchData(tag).subscribe((res) => {
       if (isError(res)) {
         this.presentToast(res.message);
+      } else {
+        res.nameColor = this.toRGBA(res.nameColor);
+        this.playerData = res;
       }
 
       this.loading = false;
