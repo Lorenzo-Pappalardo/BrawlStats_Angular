@@ -49,4 +49,27 @@ export class StatsComponent implements OnInit {
       this.loading = false;
     });
   }
+
+  getKeys(): string[] {
+    return Object.keys(this.playerData).filter(
+      (key) => !['nameColor', 'icon', 'brawlers'].includes(key)
+    );
+  }
+
+  toPresentation(key: string): string {
+    const regexp = /[A-Z]/;
+    let res = '';
+
+    for (let i = 0; i < key.length; i++) {
+      if (i === 0) {
+        res += key[i].toUpperCase();
+      } else if (regexp.test(key[i])) {
+        res += ' ' + key[i];
+      } else {
+        res += key[i];
+      }
+    }
+
+    return (res += ': ');
+  }
 }

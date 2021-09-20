@@ -1,4 +1,4 @@
-<form class="form" (submit)="this.fetchData(playerTagInput.value)">
+<form class="form" (submit)="this.fetchData(playerTagInput.value.toString())">
   <ion-card class="input-card">
     <ion-input
       type="text"
@@ -16,12 +16,14 @@
 <ion-progress-bar *ngIf="loading" type="indeterminate"></ion-progress-bar>
 
 <div *ngIf="this.playerData" class="result-card">
-  <ion-card>Tag: {{ this.playerData.tag }}</ion-card>
-  <ion-card
-    >Name:
-    <div [style.color]="this.playerData.nameColor">
-      {{ this.playerData.name }}
-    </div></ion-card
-  >
-  <ion-card>Highest Trophies: {{ this.playerData.highestTrophies }}</ion-card>
+  <ion-card *ngFor="let key of this.getKeys()"
+    >{{ this.toPresentation(key) }}
+    <div [style.color]="key === 'name' ? this.playerData.nameColor : 'inherit'">
+      {{
+        key !== "club"
+          ? this.playerData[key]
+          : this.playerData.club.name || "Not in a club"
+      }}
+    </div>
+  </ion-card>
 </div>
