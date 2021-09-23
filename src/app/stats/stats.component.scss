@@ -5,20 +5,20 @@
 }
 
 .input-card {
-  --background: #003049;
-  --color: white;
+  --background: var(--my-secondary);
+  --color: var(--my-text);
   padding: 0.3em;
   margin: 5px;
   border-radius: 10px;
 }
 
-.input-field {
+.text {
   font-size: xx-large;
   text-align: center;
 }
 
 .confirm-button {
-  --background: #d00000;
+  --background: var(--my-primary);
   --padding: 0.5em;
   --border-radius: 0 10px 10px 0;
 }
@@ -26,11 +26,11 @@
 .result-card {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 1em;
   text-align: center;
 
   > * {
-    --color: white;
+    --color: var(--my-text);
+    background-color: var(--my-secondary);
     padding: 1em;
     font-size: x-large;
 

@@ -1,29 +1,37 @@
-<form class="form" (submit)="this.fetchData(playerTagInput.value.toString())">
-  <ion-card class="input-card">
-    <ion-input
-      type="text"
-      class="input-field"
-      placeholder="Player's Tag"
-      autocapitalize="characters"
-      autocomplete="on"
-      #playerTagInput
-    ></ion-input>
-  </ion-card>
+<ion-content>
+  <form class="form" (submit)="this.fetchData(playerTagInput.value.toString())">
+    <ion-card class="input-card">
+      <ion-input
+        type="text"
+        class="text"
+        placeholder="Player's Tag"
+        autocapitalize="characters"
+        autocomplete="on"
+        #playerTagInput
+      ></ion-input>
+    </ion-card>
 
-  <ion-button class="confirm-button" type="submit">Get Stats!</ion-button>
-</form>
+    <ion-button class="confirm-button" type="submit">Get Stats!</ion-button>
+  </form>
 
-<ion-progress-bar *ngIf="loading" type="indeterminate"></ion-progress-bar>
+  <ion-progress-bar *ngIf="loading" type="indeterminate"></ion-progress-bar>
 
-<div *ngIf="this.playerData" class="result-card">
-  <ion-card *ngFor="let key of this.getKeys()"
-    >{{ this.toPresentation(key) }}
-    <div [style.color]="key === 'name' ? this.playerData.nameColor : 'inherit'">
-      {{
-        key !== "club"
-          ? this.playerData[key]
-          : this.playerData.club.name || "Not in a club"
-      }}
+  <div *ngIf="this.playerData">
+    <div class="result-card">
+      <ion-card *ngFor="let key of this.getKeys()"
+        >{{ this.toPresentation(key) }}
+        <div
+          [style.color]="key === 'name' ? this.playerData.nameColor : 'inherit'"
+        >
+          {{
+            key !== "club"
+              ? this.playerData[key]
+              : this.playerData.club.name || "Not in a club"
+          }}
+        </div>
+      </ion-card>
     </div>
-  </ion-card>
-</div>
+    <h1 class="text">Brawlers</h1>
+    <div class="result-card"></div>
+  </div>
+</ion-content>
