@@ -1,12 +1,27 @@
 <ion-app>
   <ion-header>
     <ion-toolbar class="toolbar"
-      ><a routerLink="" [style]="{ color: 'white', 'text-decoration': 'none' }"
-        ><ion-title>BrawlStats</ion-title></a
-      >
+      ><ion-title><a routerLink="" class="title">BrawlStats</a></ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-router-outlet></ion-router-outlet>
   </ion-content>
+  <ion-footer>
+    <ion-toolbar class="toolbar">
+      <div class="disclaimer">
+        <div>
+          This content is not affiliated with, endorsed, sponsored, or
+          specifically approved by Supercell and Supercell is not responsible
+          for it.
+        </div>
+        <div>
+          For more information see Supercell’s Fan Content Policy:
+          <a href="https://www.supercell.com/fan-content-policy"
+            >www.supercell.com/fan-content-policy.</a
+          >
+        </div>
+      </div>
+    </ion-toolbar>
+  </ion-footer>
 </ion-app>

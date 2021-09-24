@@ -1,3 +1,16 @@
 .toolbar {
-  --background: #d00000;
+  --background: var(--my-primary);
+
+  .title {
+    text-decoration: none;
+  }
+
+  .disclaimer {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  * {
+    color: var(--my-text);
+  }
 }
