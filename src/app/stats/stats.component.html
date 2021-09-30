@@ -4,7 +4,7 @@
       <ion-input
         type="text"
         class="text"
-        placeholder="Player's Tag"
+        placeholder="Player's Tag (without #)"
         autocapitalize="characters"
         autocomplete="on"
         #playerTagInput
@@ -31,7 +31,11 @@
         </div>
       </ion-card>
     </div>
-    <h1 class="text">Brawlers</h1>
-    <div class="result-card"></div>
+    <h1 class="text">Brawlers: {{ this.playerData.brawlers.length }}</h1>
+    <div class="result-card">
+      <ion-card *ngFor="let brawler of this.playerData.brawlers">{{
+        brawler.name
+      }}</ion-card>
+    </div>
   </div>
 </ion-content>
