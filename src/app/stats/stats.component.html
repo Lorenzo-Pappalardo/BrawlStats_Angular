@@ -1,5 +1,5 @@
 <ion-content>
-  <form class="form" (submit)="this.fetchData(playerTagInput.value.toString())">
+  <form class="form" (ngSubmit)="fetchData(playerTagInput.value.toString())">
     <ion-card class="input-card">
       <ion-input
         #playerTagInput
@@ -19,24 +19,22 @@
 
   <ion-progress-bar *ngIf="loading" type="indeterminate"></ion-progress-bar>
 
-  <div *ngIf="this.playerData">
+  <div *ngIf="playerData">
     <div class="result-card">
-      <ion-card *ngFor="let key of this.getKeys()"
-        >{{ this.toPresentation(key) }}
-        <div
-          [style.color]="key === 'name' ? this.playerData.nameColor : 'inherit'"
-        >
+      <ion-card *ngFor="let key of getKeys()"
+        >{{ toPresentation(key) }}
+        <div [style.color]="key === 'name' ? playerData.nameColor : 'inherit'">
           {{
             key !== "club"
-              ? this.playerData[key]
-              : this.playerData.club.name || "Not in a club"
+              ? playerData[key]
+              : playerData.club.name || "Not in a club"
           }}
         </div>
       </ion-card>
     </div>
-    <h1 class="text">Brawlers: {{ this.playerData.brawlers.length }}</h1>
+    <h1 class="text">Brawlers: {{ playerData.brawlers.length }}</h1>
     <div class="result-card">
-      <ion-card *ngFor="let brawler of this.playerData.brawlers">{{
+      <ion-card *ngFor="let brawler of playerData.brawlers">{{
         brawler.name
       }}</ion-card>
     </div>
