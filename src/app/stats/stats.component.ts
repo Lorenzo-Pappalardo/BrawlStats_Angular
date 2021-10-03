@@ -70,6 +70,6 @@ export class StatsComponent implements OnInit {
       }
     }
 
-    return (res += ': ');
+    return res + ': ';
   }
 }
