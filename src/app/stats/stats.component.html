@@ -2,12 +2,15 @@
   <form class="form" (submit)="this.fetchData(playerTagInput.value.toString())">
     <ion-card class="input-card">
       <ion-input
-        type="text"
+        #playerTagInput
         class="text"
-        placeholder="Player's Tag (without #)"
+        name="tag"
         autocapitalize="characters"
         autocomplete="on"
-        #playerTagInput
+        autofocus
+        clearInput
+        enterkeyhint="enter"
+        placeholder="Player's Tag (without #)"
       ></ion-input>
     </ion-card>
 
